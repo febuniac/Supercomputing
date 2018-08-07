@@ -18,13 +18,14 @@ double soma_positivos1 (double *a, int n){
   {
     //checa positividade
     if (a[i]>=0){
+      std::cout<<"\nvalor_SP1:"<<a[i]<<"\n";
       resultado+=a[i];
     }
     else{
       continue;
     }
   }
-  std::cout << "RESULTADO 1: "
+  std::cout << " \n RESULTADO 1: "
             << resultado ;
   return resultado;
 }
@@ -37,9 +38,10 @@ double soma_positivos2 (double *a, int n){
   for (int j=0 ; j<n ; j++)
   {
     //checa positividade
+    std::cout<<"\nvalor_SP2:"<<a[j]<<"\n";
     resultado2+=(a[j]>=0)?a[j]:0;
   }
-  std::cout << "RESULTADO 2: "
+  std::cout << "\n RESULTADO 2: "
             << resultado2;
 
   return resultado2;
@@ -47,7 +49,7 @@ double soma_positivos2 (double *a, int n){
 
 
 int main (int argc, char *argv[]) {
-  int size = 1000000;//tamanho do array "a"
+  int size = 5;//tamanho do array "a"
 
   double *vetor= new double[size]; //"criando o array"
   int result;
