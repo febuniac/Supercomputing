@@ -49,7 +49,7 @@ double soma_positivos2 (double *a, int n){
 int main (int argc, char *argv[]) {
   int size = 1000000;//tamanho do array "a"
 
-  double *vetor= new double[size]; "criando o array"
+  double *vetor= new double[size]; //"criando o array"
   int result;
   double rnum;
 
