@@ -64,9 +64,9 @@ int main (int argc, char *argv[]) {
   srand (time(NULL));
   for ( unsigned long n=0 ; n<size ; n++ )
   {/* generate secret number between 0 and 20: */
-  rnum = rand() % 20 + 1;
-  vetor[n] = rnum - 10;//num randomico do array
-  vetor2[n] = rnum - 10;//num randomico do array
+    rnum = rand() % 20 + 1;
+    vetor[n] = rnum - 10;//num randomico do array
+    vetor2[n] = rnum - 10;//num randomico do array
   }
   // unsigned long iteration = 5;
   // for (int k=0 ; k<=iteration ; k++ ){
