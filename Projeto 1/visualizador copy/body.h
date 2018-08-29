@@ -37,3 +37,8 @@ typedef struct _ball {
     double vx, vy;
     double mass, radius;
 } ball;
+
+struct simulacao {//para guardar os valores da simulação (usar return)
+  double field_width, field_height, n, mu, alpha_w, alpha_b;
+} ;
+

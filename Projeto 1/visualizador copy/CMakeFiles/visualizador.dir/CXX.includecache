@@ -6,8 +6,18 @@
 
 #IncludeRegexTransform: 
 
-/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/Projeto1.cpp
+/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/body.h
+
+/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/visualizador.cpp
+visualizador.h
+/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/visualizador.h
+SDL2/SDL.h
+/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/SDL2/SDL.h
+SDL2/SDL2_gfxPrimitives.h
+/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/SDL2/SDL2_gfxPrimitives.h
 stdio.h
+-
+chrono
 -
 iostream
 -
@@ -15,14 +25,6 @@ vector
 -
 iterator
 -
-
-/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/body.h
-
-/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/main.cpp
-visualizador.h
-/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/visualizador.h
-Projeto1.cpp
-/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/Projeto1.cpp
 
 /Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/visualizador.h
 SDL2/SDL.h

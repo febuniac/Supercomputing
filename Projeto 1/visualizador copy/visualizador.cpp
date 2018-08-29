@@ -44,7 +44,6 @@ Visualizador::Visualizador(std::vector<ball> &bodies, int field_width, int field
     field_height(field_height),
     bodies(bodies) {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
-
     double ratio = (double) field_width / field_height;
     if (ratio > 1) {
         win_width = max_dimension;
@@ -57,6 +56,7 @@ Visualizador::Visualizador(std::vector<ball> &bodies, int field_width, int field
                            SDL_WINDOWPOS_CENTERED, win_width, win_height, 0);
     renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     iter = 0;
+   
 }
 
 Visualizador::~Visualizador() {
@@ -88,55 +88,82 @@ void Visualizador::run() {
     }
 }
 
-// void Visualizador::read_file(){
-// struct simulacao {//para guardar os valores da simulação (usar return)
-//   double field_width, field_height, n, mu, alpha_w, alpha_b;} ;
-// struct simulacao s;
-// struct _ball b;
-// // reading the file with program info
-//   if (!(cin >> s.field_width >> s.field_height >> s.n)) { throw 1; }
-//   if (!(cin >> s.mu >> s.alpha_w >> s.alpha_b)) { throw 1; }
-// }
-
-// vector<ball> Visualizador::save_to_vec(){}
-// std::vector<ball> list_balls (s.n);
-
-//   read_file();
-  
-//   for (int i = 0; i <= (s.n); i++){
-//     if (!(cin >>b.id >>b.radius >> b.mass>>b.x>> b.y>> b.vx>> b.vy)){
-//       list_balls.push_back(b);
-//       cout<< b.id<< b.radius<< b.mass<<b.x<< b.y<< b.vx<< b.vy<<"\n";
-//     }
-//   }
-//   return list_balls;
-// }
 
 
+double Visualizador::ball_move(){
+    double delta_t=0.1;
+    double atualiza_x;
+    double atualiza_y;
+    //list_balls = current
+    //list_balls2 = new
+    for (int i = 0; i < (bodies.size()); i++){ 
+       bodies[i].x = bodies[i].x + (bodies[i].vx);
+    //    list_balls2[i].x = atualiza_x;
+        
+       bodies[i].y = bodies[i].y + (bodies[i].vy);
+       //printf("BALL MOVE\Nx=%f\n", bodies[i].x);
+    //    list_balls2[i].y = atualiza_y;
+       //b = list_balls2[i];
 
+    //   cout << list_balls.at(i).x << ", ";
+    //   cout << list_balls.at(i).y << ' '<<endl;
 
-void Visualizador::do_iteration() {
-
-// struct simulacao {//para guardar os valores da simulação (usar return)
-//   double field_width, field_height, n, mu, alpha_w, alpha_b;
-// } ;
-// struct simulacao s;
-// struct _ball b;
-
-// std::vector<ball> list_balls (s.n);
-//   // reading the file with program info
-//   if (!(cin >> s.field_width >> s.field_height >> s.n)) { throw 1; }
-//   if (!(cin >> s.mu >> s.alpha_w >> s.alpha_b)) { throw 1; }
-//   //adding to a vector
-//   for (int i = 0; i <= (s.n); i++){
-//     if (!(cin >>b.id >>b.radius >> b.mass>>b.x>> b.y>> b.vx>> b.vy)){
-//       list_balls.push_back(b);
-//       cout<< b.id<< b.radius<< b.mass<<b.x<< b.y<< b.vx<< b.vy<<"\n";
-//     }
-// }
-    iter++;
+    //   cout << list_balls2.at(i).x << ", ";
+    //   cout << list_balls2.at(i).y << ' '<< endl;
+    }
+  return atualiza_x, atualiza_y;
 }
 
+void Visualizador::read_file(){
+  if (!(cin >> s.field_width >> s.field_height >> s.n)) { throw 1; }
+  if (!(cin >> s.mu >> s.alpha_w >> s.alpha_b)) { throw 1; }
+}
 
+void Visualizador::ball_hit_ball(){
+    int hipotenusa;
+    for (int i = 0; i < (bodies.size()); i++){
+      for (int j = i+1; j < (bodies.size()); j++){
+        double cateto1 =(bodies[i].x - bodies[j].x);
+        double cateto2 = (bodies[i].y - bodies[j].y);
+        hipotenusa =  sqrt(pow(cateto1,2)+pow(cateto2,2));
+        if (hipotenusa < (bodies[i].radius + bodies[j].radius)){
+          printf("Choque de Bolas!");
+        }
+      }
+    }
+  }
 
-
+void Visualizador::ball_hit_wall(){
+    for (int i = 0; i < (bodies.size()); i++){
+      if((bodies[i].x -bodies[i].radius)<=0){
+        printf("colisão com parede da esquerda");
+        bodies[i].vx = (bodies[i].vx)*(-1);
+        cout<< "vx esq"<<bodies[i].vx << endl;
+      }
+      else if((bodies[i].y -bodies[i].radius)<=0){
+        printf("colisão com parede de baixo");
+        bodies[i].vy = (bodies[i].vy)*(-1);
+        cout<< "vx baix"<<bodies[i].vy<< endl;
+      }
+      else if((list_balls[i].y +list_balls[i].radius)>=s.field_height){
+        printf("colisão com parede de cima");
+        bodies[i].vy = (-bodies[i].vy);
+        cout<< "vx cim"<<bodies[i].vy<< endl;
+      }
+      else if((bodies[i].x +bodies[i].radius)>=s.field_width){
+        printf("colisão com parede da direita");
+        bodies[i].vx = (-bodies[i].vx);
+        cout<< "vx dir"<<bodies[i].vx<< endl;
+      }
+    }
+}
+void Visualizador::do_iteration() {
+    Visualizador::ball_move();
+    //SWAP(atualização de vetor p próximas posições)
+    // temp = list_balls2;
+    // list_balls2 = list_balls;
+    // list_balls = temp;
+    //Visualizador::ball_hit_ball();
+    //Visualizador::ball_hit_wall();
+    iter++;
+}

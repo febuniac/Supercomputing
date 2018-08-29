@@ -1,1 +1,1 @@
-/Library/Developer/CommandLineTools/usr/bin/c++   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/visualizador.dir/main.cpp.o CMakeFiles/visualizador.dir/visualizador.cpp.o  -o visualizador -lSDL2 -lSDL2_gfx -lSDL2 -lSDL2_gfx 
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/visualizador.dir/main.cpp.o CMakeFiles/visualizador.dir/visualizador.cpp.o  -o visualizador -lSDL2 -lSDL2_gfx -lSDL2 -lSDL2_gfx 

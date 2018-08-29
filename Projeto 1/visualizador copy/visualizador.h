@@ -47,12 +47,24 @@ class Visualizador
 public:
     long iter;
     double delta_t;
+    struct simulacao s;
+    struct _ball b;
+    std::vector<ball> temp;
+    std::vector<ball> list_balls ;
+    std::vector<ball> list_balls2 ; 
 
     Visualizador(std::vector<ball> &bodies, int field_width, int field_height, double delta_t);
     ~Visualizador();
-
+    
     void do_iteration();
     void run();
+    double ball_move();
+    void ball_hit_ball();
+    void ball_hit_wall();
+    std::vector<ball> save_to_vec();
+    void read_file();
+
+
 
 private:
     SDL_Window *win;

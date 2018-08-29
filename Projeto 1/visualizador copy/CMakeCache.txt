@@ -19,7 +19,7 @@ CMAKE_AR:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=debug
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -217,6 +217,8 @@ visualizador_SOURCE_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/Projeto
 
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
+//MODIFIED property for variable: CMAKE_BUILD_TYPE
+CMAKE_BUILD_TYPE-MODIFIED:INTERNAL=ON
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy
 //Major version of cmake used to create the current loaded cache

@@ -20,23 +20,23 @@ using namespace std;
 //se colidir com bola
 //se no proximo instante de tempo as bolas forem bater eu aponto o vetor de velociddade para o lado da colisao e na proxima interacao elas se movem
 
-typedef struct _ball {
-  int id ;
-  double radius ;
-  double mass ;
-  //posição
-  double x ;
-  double y ;
-  //velocidade
-  double vx ;
-  double vy ;
-} ball;
+// typedef struct _ball {
+//   int id ;
+//   double radius ;
+//   double mass ;
+//   //posição
+//   double x ;
+//   double y ;
+//   //velocidade
+//   double vx ;
+//   double vy ;
+// } ball;
 
 
 
-struct simulacao {//para guardar os valores da simulação (usar return)
-  double field_width, field_height, n, mu, alpha_w, alpha_b;
-} ;
+  // struct simulacao {//para guardar os valores da simulação (usar return)
+  //   double field_width, field_height, n, mu, alpha_w, alpha_b;
+  // } ;
 struct simulacao s;
 struct _ball b;
 
@@ -60,8 +60,8 @@ vector<ball> save_to_vec(){
     list_balls.push_back(b);
     list_balls2.push_back(b);
     //for que vai lendo e jogando no lista de bolas 
-    //vector<bola> printf(list_balls[i]);
   }
+  cout<<list_balls2.size();
   return list_balls;
 }
 
@@ -80,11 +80,11 @@ vector<ball> save_to_vec(){
        list_balls2[i].y = atualiza_y;
        //b = list_balls2[i];
 
-       cout << list_balls.at(i).x << ", ";
-       cout << list_balls.at(i).y << ' '<<endl;
+      cout << list_balls.at(i).x << ", ";
+      cout << list_balls.at(i).y << ' '<<endl;
 
-       cout << list_balls2.at(i).x << ", ";
-       cout << list_balls2.at(i).y << ' '<< endl;
+      cout << list_balls2.at(i).x << ", ";
+      cout << list_balls2.at(i).y << ' '<< endl;
     }
   return atualiza_x, atualiza_y;
 
@@ -129,24 +129,24 @@ vector<ball> save_to_vec(){
 
   }
 
-int main () {
-  int iteration = 0;
-  std::vector<ball> temp; 
-  save_to_vec();
-  while (iteration<10) {
-    ball_move();
-    //SWAP(atualização de vetor p próximas posições)
-    temp = list_balls2;
-    list_balls2 = list_balls;
-    list_balls = temp;
-    iteration++;
-    ball_hit_ball();
-    ball_hit_wall();
+  // int main () {
+  //   int iteration = 0;
+  //   std::vector<ball> temp; 
+  //   save_to_vec();
+  //   while (iteration<10) {
+  //     ball_move();
+  //     //SWAP(atualização de vetor p próximas posições)
+  //     temp = list_balls2;
+  //     list_balls2 = list_balls;
+  //     list_balls = temp;
+  //     iteration++;
+  //     ball_hit_ball();
+  //     ball_hit_wall();
 
-  }
-  
-  //cin >>b.id >>b.radius >> b.mass>>b.x>> b.y>> b.vx>> b.vy;
-  return 0;
-}
+  //   }
+    
+  //   //cin >>b.id >>b.radius >> b.mass>>b.x>> b.y>> b.vx>> b.vy;
+  //   return 0;
+  // }
 
 //https://www.tenouk.com/Module19.html
