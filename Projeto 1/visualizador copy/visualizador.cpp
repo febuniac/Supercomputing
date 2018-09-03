@@ -38,13 +38,14 @@ using namespace std;
 typedef std::chrono::high_resolution_clock Time;
 
 
-Visualizador::Visualizador(std::vector<ball> &bodies, int field_width, int field_height, double delta_t) :
+Visualizador::Visualizador(std::vector<ball> &bodies, simulacao s, double delta_t) :
     delta_t(delta_t),
-    field_width(field_width),
-    field_height(field_height),
+    s(s),
+    //field_width(field_width),
+    //field_height(field_height),
     bodies(bodies) {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
-    double ratio = (double) field_width / field_height;
+    double ratio = (double) s.field_width / s.field_height;
     if (ratio > 1) {
         win_width = max_dimension;
         win_height = max_dimension / ratio;
@@ -70,9 +71,9 @@ void Visualizador::draw() {
     SDL_SetRenderDrawColor(renderer, 160, 160, 185, 255);
     SDL_RenderClear(renderer);
     for (auto i = bodies.begin(); i != bodies.end(); i++) {
-        filledCircleRGBA(renderer, i->x / field_width * win_width,
-                         i->y / field_height* win_height,
-                         i->radius / field_width * win_width,
+        filledCircleRGBA(renderer, i->x / s.field_width * win_width,
+                         i->y / s.field_height* win_height,
+                         i->radius / s.field_width * win_width,
                          255, 0 ,0, 255);
     }
     SDL_RenderPresent(renderer);
@@ -97,10 +98,10 @@ double Visualizador::ball_move(){
     //list_balls = current
     //list_balls2 = new
     for (int i = 0; i < (bodies.size()); i++){ 
-       bodies[i].x = bodies[i].x + (bodies[i].vx);
+       bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);
     //    list_balls2[i].x = atualiza_x;
         
-       bodies[i].y = bodies[i].y + (bodies[i].vy);
+       bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
        //printf("BALL MOVE\Nx=%f\n", bodies[i].x);
     //    list_balls2[i].y = atualiza_y;
        //b = list_balls2[i];
@@ -134,28 +135,28 @@ void Visualizador::ball_hit_ball(){
   }
 
 void Visualizador::ball_hit_wall(){
-    for (int i = 0; i < (bodies.size()); i++){
-      if((bodies[i].x -bodies[i].radius)<=0){
-        printf("colisão com parede da esquerda");
-        bodies[i].vx = (bodies[i].vx)*(-1);
-        cout<< "vx esq"<<bodies[i].vx << endl;
-      }
-      else if((bodies[i].y -bodies[i].radius)<=0){
-        printf("colisão com parede de baixo");
-        bodies[i].vy = (bodies[i].vy)*(-1);
-        cout<< "vx baix"<<bodies[i].vy<< endl;
-      }
-      else if((list_balls[i].y +list_balls[i].radius)>=s.field_height){
-        printf("colisão com parede de cima");
-        bodies[i].vy = (-bodies[i].vy);
-        cout<< "vx cim"<<bodies[i].vy<< endl;
-      }
-      else if((bodies[i].x +bodies[i].radius)>=s.field_width){
-        printf("colisão com parede da direita");
-        bodies[i].vx = (-bodies[i].vx);
-        cout<< "vx dir"<<bodies[i].vx<< endl;
-      }
+  for (int i = 0; i <= (bodies.size()); i++){
+    if((bodies[i].x - bodies[i].radius)<=0){
+      printf("colisão com parede da esquerda");
+      bodies[i].vx = -bodies[i].vx;
+      cout<< "vx esq"<<bodies[i].vx << endl;
     }
+    else if((bodies[i].y - bodies[i].radius)<=0){
+      printf("colisão com parede de baixo");
+      bodies[i].vy = -bodies[i].vy;
+      cout<< "vx baix"<<bodies[i].vy<< endl;
+    }
+    else if((bodies[i].y +bodies[i].radius)>=s.field_height){
+      printf("colisão com parede de cima");
+      bodies[i].vy = -bodies[i].vy;
+      cout<< "vx cim"<<bodies[i].vy<< endl;
+    }
+    else if((bodies[i].x + bodies[i].radius)>= s.field_width){
+      printf("colisão com parede da direita");
+      bodies[i].vx = -bodies[i].vx;
+      cout<< "vx dir"<<bodies[i].vx<< endl;
+    }
+  }
 }
 void Visualizador::do_iteration() {
     Visualizador::ball_move();
@@ -163,7 +164,7 @@ void Visualizador::do_iteration() {
     // temp = list_balls2;
     // list_balls2 = list_balls;
     // list_balls = temp;
-    //Visualizador::ball_hit_ball();
-    //Visualizador::ball_hit_wall();
+    Visualizador::ball_hit_ball();
+    Visualizador::ball_hit_wall();
     iter++;
 }

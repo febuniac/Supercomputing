@@ -53,7 +53,7 @@ public:
     std::vector<ball> list_balls ;
     std::vector<ball> list_balls2 ; 
 
-    Visualizador(std::vector<ball> &bodies, int field_width, int field_height, double delta_t);
+    Visualizador(std::vector<ball> &bodies,simulacao s, double delta_t);
     ~Visualizador();
     
     void do_iteration();
