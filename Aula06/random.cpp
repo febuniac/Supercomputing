@@ -27,34 +27,18 @@
 // History: 
 //      Written by Tim Mattson, 9/2007.
 //      changed to drandom() to avoid collision with standard libraries, 11/2011
-#include <iostream>
-using namespace std;
-
-class  {
-   public:
-      double length;         // Length of a box
-      double breadth;        // Breadth of a box
-      double height;         // Height of a box
-
-      // Member functions declaration
-      double getVolume(void);
-      void setLength( double len );
-      void setBreadth( double bre );
-      void setHeight( double hei );
-};
+    
 static long MULTIPLIER  = 1366;
-static long MULTS[] = {};
+//static long MULTS[] = {};
 static long ADDEND      = 150889;
 static long PMOD        = 714025;
-static long PMODS[] = {};
+//static long PMODS[] = {};
 long random_last = 0;
 double random_low, random_hi;
-
 double drandom()
 {
     long random_next;
     double ret_val;
-
 // 
 // compute an integer random number from zero to mod
 //
@@ -89,3 +73,10 @@ void seed(double low_in, double hi_in)
 // end of pseudo random generator code.
 //**********************************************************
 
+// static long MULTIPLIER  = 1366;
+//     static long MULTS[] = {};
+//     static long ADDEND      = 150889;
+//     static long PMOD        = 714025;
+//     static long PMODS[] = {};
+//     long random_last = 0;
+//     double random_low, random_hi;
