@@ -27,15 +27,18 @@
 // History: 
 //      Written by Tim Mattson, 9/2007.
 //      changed to drandom() to avoid collision with standard libraries, 11/2011
-    
-static long MULTIPLIER  = 1366;
-//static long MULTS[] = {};
-static long ADDEND      = 150889;
-static long PMOD        = 714025;
-//static long PMODS[] = {};
-long random_last = 0;
-double random_low, random_hi;
-double drandom()
+
+
+#include "random.h"
+
+Randz::Randz(long MULTIPLIER,long ADDEND, long PMOD) :
+    MULTIPLIER(MULTIPLIER),
+    ADDEND(ADDEND),
+    PMOD(PMOD){
+}
+
+
+double Randz::drandom()
 {
     long random_next;
     double ret_val;
@@ -54,7 +57,7 @@ double drandom()
 //
 // set the seed and the range
 //
-void seed(double low_in, double hi_in)
+void Randz::seed(double low_in, double hi_in)
 {
    if(low_in < hi_in)
    { 
@@ -72,11 +75,3 @@ void seed(double low_in, double hi_in)
 //**********************************************************
 // end of pseudo random generator code.
 //**********************************************************
-
-// static long MULTIPLIER  = 1366;
-//     static long MULTS[] = {};
-//     static long ADDEND      = 150889;
-//     static long PMOD        = 714025;
-//     static long PMODS[] = {};
-//     long random_last = 0;
-//     double random_low, random_hi;

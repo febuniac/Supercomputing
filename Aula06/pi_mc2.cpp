@@ -84,7 +84,7 @@ History:
 #include <stdio.h>
 #include <omp.h>
 #include "random.h"
-#include <vector>
+//  #include <vector>
 
 // 
 // The monte carlo pi program
@@ -103,17 +103,17 @@ int main ()
    
    std::vector<double> x_vec (num_trials);
    std::vector<double> y_vec (num_trials); 
-   
    for(i=0;i<num_trials; i++){
     x = drandom(); 
-    x_vec[i] =x ;//como se fosse um push_back
+    x_vec.push_back(x);
     y = drandom();
-    y_vec[i] =y;
+    y_vec.push_back(y);
    }
    #pragma omp parallel for reduction(+:Ncirc) private(x,y,test) //paralelização ingenua
    for(i=0;i<num_trials; i++)
    {
-      test = x_vec[i]*x_vec[i] + y_vec[i]*y_vec[i];
+      test = x*x + y*y;
+    
       if (test <= r*r) Ncirc++;
     }
 

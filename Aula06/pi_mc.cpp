@@ -84,7 +84,7 @@ History:
 #include <stdio.h>
 #include <omp.h>
 #include "random.h"
-//  #include <vector>
+#include <vector>
 
 // 
 // The monte carlo pi program
@@ -94,6 +94,10 @@ static long num_trials = 100000000;
 
 int main ()
 {
+   static long MULTIPLIER[] = {914334,360889,380985,283741,92717,43165,17364,219};
+   static long PMOD[] = {4194301,2097143,1048573,524287,262139,131071,65521};
+   long ADDEND=0;
+   
    long i;  long Ncirc = 0;
    double pi, x, y, test;
    double r = 1.0;   // radius of circle. Side of squrare is 2*r 
@@ -103,17 +107,18 @@ int main ()
    
    std::vector<double> x_vec (num_trials);
    std::vector<double> y_vec (num_trials); 
+   
    for(i=0;i<num_trials; i++){
     x = drandom(); 
-    x_vec.push_back(x);
+    x_vec[i] =x ;//como se fosse um push_back
     y = drandom();
-    y_vec.push_back(y);
+    y_vec[i] =y;
    }
    #pragma omp parallel for reduction(+:Ncirc) private(x,y,test) //paralelização ingenua
    for(i=0;i<num_trials; i++)
    {
-      test = x*x + y*y;
-    
+      Randz x( MULTIPLIER[i], ADDEND,  PMOD[i]);
+      test = x_vec[i]*x_vec[i] + y_vec[i]*y_vec[i];
       if (test <= r*r) Ncirc++;
     }
 
@@ -121,7 +126,9 @@ int main ()
 
     printf("\n %ld trials, pi is %lf ",num_trials, pi);
     printf(" in %lf seconds\n",omp_get_wtime()-time);
-
+    // for(i=0;i<=omp_get_num_threads( ); i++){
+    //   Randz r( MULTIPLIER[i], ADDEND,  PMOD[i]);
+    // }
     return 0;
 }
 	  
