@@ -160,11 +160,12 @@ void Visualizador::ball_hit_wall(){
 }
 void Visualizador::do_iteration() {
     Visualizador::ball_move();
+    Visualizador::ball_hit_ball();
+    Visualizador::ball_hit_wall();
     //SWAP(atualização de vetor p próximas posições)
     // temp = list_balls2;
     // list_balls2 = list_balls;
     // list_balls = temp;
-    Visualizador::ball_hit_ball();
-    Visualizador::ball_hit_wall();
+  
     iter++;
 }
