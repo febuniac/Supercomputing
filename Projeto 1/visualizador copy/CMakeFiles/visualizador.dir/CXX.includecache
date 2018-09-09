@@ -25,6 +25,8 @@ vector
 -
 iterator
 -
+fstream
+-
 
 /Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/visualizador.h
 SDL2/SDL.h

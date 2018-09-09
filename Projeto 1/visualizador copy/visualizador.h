@@ -47,13 +47,14 @@ class Visualizador
 public:
     long iter;
     double delta_t;
+    int GUI;
     struct simulacao s;
     struct _ball b;
     std::vector<ball> temp;
     std::vector<ball> list_balls ;
     std::vector<ball> list_balls2 ; 
 
-    Visualizador(std::vector<ball> &bodies,simulacao s, double delta_t);
+    Visualizador(std::vector<ball> &bodies,simulacao s, double delta_t,int GUI);
     ~Visualizador();
     
     void do_iteration();

@@ -64,12 +64,9 @@ int main(int argc, char ** argv) {
         std::vector<ball> list_balls;
         std::vector<ball> list_balls2;
         save_to_vec(list_balls,list_balls2);
-        //read_file();
-        //std::cout <<b.id<<b.radius<<b.mass<<b.x<<b.y<<b.vx<<b.vy;
-         printf("x=%f \n", list_balls[0].x);
-        Visualizador v(list_balls, s, 0.01);
-        //v.read_file();
-         printf("x=%f \n", list_balls[0].x);
+        printf("x=%f \n", list_balls[0].x);
+        Visualizador v(list_balls, s, 0.01,0);
+        printf("x=%f \n", list_balls[0].x);
         v.run();
     return 0; 
 }

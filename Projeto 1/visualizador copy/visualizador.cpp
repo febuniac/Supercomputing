@@ -34,15 +34,16 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
+#include <fstream>
 using namespace std;
 typedef std::chrono::high_resolution_clock Time;
+ofstream myfile;
 
 
-Visualizador::Visualizador(std::vector<ball> &bodies, simulacao s, double delta_t) :
+Visualizador::Visualizador(std::vector<ball> &bodies, simulacao s, double delta_t,int GUI) :
     delta_t(delta_t),
+    GUI(GUI),
     s(s),
-    //field_width(field_width),
-    //field_height(field_height),
     bodies(bodies) {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
     double ratio = (double) s.field_width / s.field_height;
@@ -57,6 +58,11 @@ Visualizador::Visualizador(std::vector<ball> &bodies, simulacao s, double delta_
                            SDL_WINDOWPOS_CENTERED, win_width, win_height, 0);
     renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
     iter = 0;
+    //Abrindo o GUI
+    myfile.open ("GUI.txt");
+    if(GUI == 0){
+        myfile <<"INFORMAÇÕES DO GUI"<<'\n';
+    }
    
 }
 
@@ -68,7 +74,7 @@ Visualizador::~Visualizador() {
 
 
 void Visualizador::draw() {
-    SDL_SetRenderDrawColor(renderer, 160, 160, 185, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 185, 255);
     SDL_RenderClear(renderer);
     for (auto i = bodies.begin(); i != bodies.end(); i++) {
         filledCircleRGBA(renderer, i->x / s.field_width * win_width,
@@ -87,6 +93,8 @@ void Visualizador::run() {
         do_iteration();       
         draw();
     }
+  //Para de escrever no GUI 
+    myfile.close(); 
 }
 
 
@@ -119,23 +127,26 @@ void Visualizador::read_file(){
   if (!(cin >> s.field_width >> s.field_height >> s.n)) { throw 1; }
   if (!(cin >> s.mu >> s.alpha_w >> s.alpha_b)) { throw 1; }
 }
-
+int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
+    int proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
+    // for (int i = 0; i < (bodies.size()); i++){
+    //   for (int j = i+1; j < (bodies.size()); j++){
 void Visualizador::ball_hit_ball(){
     int hipotenusa;
     int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
     int proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
-    // for (int i = 0; i < (bodies.size()); i++){
-    //   for (int j = i+1; j < (bodies.size()); j++){
     for (int i = 0; i < (bodies.size()); i++){
       for (int j = i+1; j < (bodies.size()); j++){
         double cateto1 =(bodies[i].x - bodies[j].x);
         double cateto2 = (bodies[i].y - bodies[j].y);
         hipotenusa =  sqrt(pow(cateto1,2)+pow(cateto2,2));
-        if (hipotenusa < (bodies[i].radius + bodies[j].radius)){
-          printf("Choque de Bolas!");
+        if (hipotenusa <(bodies[i].radius + bodies[j].radius)){//Checando colisão
+          // if ((bodies[i].radius + bodies[j].radius)<=hipotenusa) {
+          printf("Choque de Bolas! \n");
+          cout<<" A:"<<bodies[i].id<<"\n"<<"B:"<< bodies[j].id<<"\n";
           
-          //BOLA1
-          proj_j = (bodies[j].vx*cateto1+bodies[j].vy+cateto2)/(hipotenusa);
+          //BOLA1 A
+          proj_j = (bodies[j].vx*cateto1+bodies[j].vy*cateto2)/(hipotenusa);//Constante de projeção da Bola1
           vjhip_x = (proj_j*cateto1)/hipotenusa;
           vjhip_y = (proj_j*cateto2)/hipotenusa;
           
@@ -148,8 +159,8 @@ void Visualizador::ball_hit_ball(){
           bodies[j].vx = vjhip_espelhado_x - vjhip_parallel_x;//novo_vetor_j_x
           bodies[j].vy = vjhip_espelhado_y - vjhip_parallel_y;//novo_vetor_j_y
 
-          //BOLA2
-          proj_i = (bodies[i].vx*cateto1+bodies[i].vy+cateto2)/(hipotenusa);
+          //BOLA2 B
+          proj_i = (bodies[i].vx*cateto1+bodies[i].vy*cateto2)/(hipotenusa);//Constante de projeção da Bola2
           vihip_x = (proj_i*cateto1)/hipotenusa;
           vihip_y = (proj_i*cateto2)/hipotenusa;
           
@@ -161,18 +172,13 @@ void Visualizador::ball_hit_ball(){
    
           bodies[i].vx = vihip_espelhado_x - vihip_parallel_x;//novo_vetor_i_x
           bodies[i].vy = vihip_espelhado_y - vihip_parallel_y;//novo_vetor_i_y
-          if ( (proj_i>0 &proj_j<0)|(proj_i<0 &proj_j>0)){
+          if ( (proj_i>0 &proj_j<0)){//|(proj_i<0 &proj_j>0)
             proj_i=--proj_i;
             proj_j=-proj_j;
           }
-          if((proj_i>0 &proj_j>0)|(proj_i<0 &proj_j<0)){
+          if((proj_i>0 &proj_j>0)){//|(proj_i<0 &proj_j<0) 
               proj_j=-proj_j;
           }
-
-          // }
-          // else if{
-
-          // }
         }
       }
     }
@@ -203,6 +209,19 @@ void Visualizador::ball_hit_wall(){
   }
 }
 void Visualizador::do_iteration() {
+  //Escrevendo no GUI
+  if(GUI == 0){
+      myfile <<"Instante de tempo (dT)"<<iter<<'\n';
+      myfile << "[";
+  }
+  for (unsigned g = 0; g < bodies.size(); g++){
+      //escerevndo no GUI
+      if(GUI == 0){
+          myfile <<"("<<bodies[g].id<<","<<bodies[g].radius<<","<<bodies[g].mass<<","
+                <<bodies[g].x<<","<<bodies[g].y<<","<<bodies[g].vx
+                <<","<<bodies[g].vy<<")"<<";";
+      }
+  }
     Visualizador::ball_move();
     Visualizador::ball_hit_ball();
     Visualizador::ball_hit_wall();
@@ -211,5 +230,8 @@ void Visualizador::do_iteration() {
     // list_balls2 = list_balls;
     // list_balls = temp;
   
+    if (GUI == 0){
+        myfile << "]" << '\n';
+    }
     iter++;
 }
