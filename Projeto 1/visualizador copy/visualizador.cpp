@@ -35,6 +35,7 @@
 #include <vector>
 #include <iterator>
 #include <fstream>
+#include <omp.h>
 using namespace std;
 typedef std::chrono::high_resolution_clock Time;
 ofstream myfile;
@@ -103,26 +104,55 @@ void Visualizador::run() {
 
 
 
-double Visualizador::ball_move(){
-    double delta_t=0.1;
+double Visualizador::ball_move(){//Funções de movimento das bolas
+    double delta_t=0.01;
     double atualiza_x;
     double atualiza_y;
     //list_balls = current
     //list_balls2 = new
+    
     for (int i = 0; i < (bodies.size()); i++){ 
-       bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);
-    //    list_balls2[i].x = atualiza_x;
-        
-       bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
-       //printf("BALL MOVE\Nx=%f\n", bodies[i].x);
-    //    list_balls2[i].y = atualiza_y;
-       //b = list_balls2[i];
+       int g = 10;
+       int acel= s.mu *bodies[i].mass *g;
+       
+  
+        bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);
+        bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
 
-    //   cout << list_balls.at(i).x << ", ";
-    //   cout << list_balls.at(i).y << ' '<<endl;
+        if(bodies[i].vx>0){
+            if (bodies[i].vx - acel*delta_t <= 0){
+            bodies[i].vx = 0;
+            }
+            else{
+            bodies[i].vx -= acel*delta_t; 
+            }    
+        }
+        else{
+            if (bodies[i].vx + acel*delta_t >= 0){
+                bodies[i].vx = 0;
+            }
+            else{
+                bodies[i].vx += acel*delta_t; 
+            }  
+        }
 
-    //   cout << list_balls2.at(i).x << ", ";
-    //   cout << list_balls2.at(i).y << ' '<< endl;
+        if(bodies[i].vy>0){
+            if (bodies[i].vy - acel*delta_t <= 0){
+                bodies[i].vy = 0;
+            }
+            else{
+
+                bodies[i].vy -= acel*delta_t; 
+            }    
+        }
+        else{
+            if (bodies[i].vy + acel*delta_t >= 0){
+                bodies[i].vy = 0;
+            }
+            else{
+                bodies[i].vy += acel*delta_t; 
+            }  
+        }
     }
   return atualiza_x, atualiza_y;
 }
@@ -133,8 +163,6 @@ void Visualizador::read_file(){
 }
 int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
     int proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
-    // for (int i = 0; i < (bodies.size()); i++){
-    //   for (int j = i+1; j < (bodies.size()); j++){
 void Visualizador::ball_hit_ball(){
     int hipotenusa;
     int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;

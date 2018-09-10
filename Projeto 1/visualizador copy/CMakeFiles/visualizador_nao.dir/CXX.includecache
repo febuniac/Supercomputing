@@ -16,9 +16,7 @@ body.h
 vector
 -
 
-/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/visualizador_parallel.cpp
-omp.h
--
+/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/visualizador_nao.cpp
 iostream
 -
 vector
@@ -32,5 +30,7 @@ stdio.h
 iterator
 -
 math.h
+-
+omp.h
 -
 

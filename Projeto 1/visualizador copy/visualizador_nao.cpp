@@ -1,4 +1,3 @@
-#include <omp.h>
 #include <iostream>
 #include <vector>
 #include <chrono>
@@ -6,6 +5,7 @@
 #include <stdio.h>
 #include <iterator>
 #include <math.h>
+#include <omp.h>
 
 struct simulacao s;
 struct _ball b;
@@ -20,14 +20,14 @@ void testes(std::vector<ball> &bodies, simulacao s, double delta_t,long iter){
     for(long n = 0; n<iter; n++){ 
         double delta_t=0.01;
         //ballmove
-        #pragma omp parallel for
+
         for (int i = 0; i < (bodies.size()); i++){ 
         bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);     
         bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
         }
 
         //ballhitball
-        #pragma omp parallel for
+
         for (int i = 0; i < (bodies.size()); i++){
             for (int j = i+1; j < (bodies.size()); j++){
                 double cateto1 =(bodies[i].x - bodies[j].x);
@@ -78,7 +78,7 @@ void testes(std::vector<ball> &bodies, simulacao s, double delta_t,long iter){
             }
 
         // ball hit wall
-        #pragma omp parallel for
+
         for (int i = 0; i <= (bodies.size()); i++){
             if((bodies[i].x - bodies[i].radius)<=0){
             printf("colisão com parede da esquerda");
@@ -113,7 +113,7 @@ std::vector<ball> save_to_vec(std::vector<ball> &list_balls){
   read_file();
   //criando listas de bolas //for que vai lendo e jogando no lista de bolas
   std::cout<<s.n;
-  #pragma omp parallel for
+
   for (int i = 0; i < s.n; i++){
     cin >>b.id >>b.radius >> b.mass>>b.x>> b.y>> b.vx>> b.vy;
     list_balls.push_back(b);
