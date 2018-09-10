@@ -16,9 +16,7 @@ pkg_search_module(SDL2_gfx REQUIRED SDL2_gfx)
 # compile flags
 SET(SIMDFLAG "-ffast-math -ftree-vectorize -mavx")
 SET(SIMDFLAG2 "-ffast-math -ftree-vectorize -mavx2")
-SET(OMPFLAG "-fopenmp")
 
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OMPFLAG}")
 
 # Add global definitions
 add_executable(visualizador main.cpp visualizador.cpp)

@@ -1,4 +1,5 @@
 /Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles/rebuild_cache.dir
 /Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles/edit_cache.dir
+/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles/visualizador_nao.dir
 /Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles/visualizador_parallel.dir
 /Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles/visualizador.dir

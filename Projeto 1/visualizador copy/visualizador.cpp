@@ -119,40 +119,40 @@ double Visualizador::ball_move(){//Funções de movimento das bolas
         bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);
         bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
 
-        if(bodies[i].vx>0){
-            if (bodies[i].vx - acel*delta_t <= 0){
-            bodies[i].vx = 0;
-            }
-            else{
-            bodies[i].vx -= acel*delta_t; 
-            }    
-        }
-        else{
-            if (bodies[i].vx + acel*delta_t >= 0){
-                bodies[i].vx = 0;
-            }
-            else{
-                bodies[i].vx += acel*delta_t; 
-            }  
-        }
+        // if(bodies[i].vx>0){
+        //     if (bodies[i].vx - acel*delta_t <= 0){
+        //     bodies[i].vx = 0;
+        //     }
+        //     else{
+        //     bodies[i].vx -= acel*delta_t; 
+        //     }    
+        // }
+        // else{
+        //     if (bodies[i].vx + acel*delta_t >= 0){
+        //         bodies[i].vx = 0;
+        //     }
+        //     else{
+        //         bodies[i].vx += acel*delta_t; 
+        //     }  
+        // }
 
-        if(bodies[i].vy>0){
-            if (bodies[i].vy - acel*delta_t <= 0){
-                bodies[i].vy = 0;
-            }
-            else{
+        // if(bodies[i].vy>0){
+        //     if (bodies[i].vy - acel*delta_t <= 0){
+        //         bodies[i].vy = 0;
+        //     }
+        //     else{
 
-                bodies[i].vy -= acel*delta_t; 
-            }    
-        }
-        else{
-            if (bodies[i].vy + acel*delta_t >= 0){
-                bodies[i].vy = 0;
-            }
-            else{
-                bodies[i].vy += acel*delta_t; 
-            }  
-        }
+        //         bodies[i].vy -= acel*delta_t; 
+        //     }    
+        // }
+        // else{
+        //     if (bodies[i].vy + acel*delta_t >= 0){
+        //         bodies[i].vy = 0;
+        //     }
+        //     else{
+        //         bodies[i].vy += acel*delta_t; 
+        //     }  
+        // }
     }
   return atualiza_x, atualiza_y;
 }

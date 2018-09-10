@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named visualizador_nao
+
+# Build rule for target.
+visualizador_nao: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualizador_nao
+.PHONY : visualizador_nao
+
+# fast build rule for target.
+visualizador_nao/fast:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/build
+.PHONY : visualizador_nao/fast
+
+#=============================================================================
 # Target rules for targets named visualizador_parallel
 
 # Build rule for target.
@@ -190,6 +203,33 @@ visualizador.cpp.s:
 	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/visualizador.cpp.s
 .PHONY : visualizador.cpp.s
 
+visualizador_nao.o: visualizador_nao.cpp.o
+
+.PHONY : visualizador_nao.o
+
+# target to build an object file
+visualizador_nao.cpp.o:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.o
+.PHONY : visualizador_nao.cpp.o
+
+visualizador_nao.i: visualizador_nao.cpp.i
+
+.PHONY : visualizador_nao.i
+
+# target to preprocess a source file
+visualizador_nao.cpp.i:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.i
+.PHONY : visualizador_nao.cpp.i
+
+visualizador_nao.s: visualizador_nao.cpp.s
+
+.PHONY : visualizador_nao.s
+
+# target to generate assembly for a file
+visualizador_nao.cpp.s:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.s
+.PHONY : visualizador_nao.cpp.s
+
 visualizador_parallel.o: visualizador_parallel.cpp.o
 
 .PHONY : visualizador_parallel.o
@@ -225,6 +265,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... visualizador_nao"
 	@echo "... visualizador_parallel"
 	@echo "... visualizador"
 	@echo "... main.o"
@@ -233,6 +274,9 @@ help:
 	@echo "... visualizador.o"
 	@echo "... visualizador.i"
 	@echo "... visualizador.s"
+	@echo "... visualizador_nao.o"
+	@echo "... visualizador_nao.i"
+	@echo "... visualizador_nao.s"
 	@echo "... visualizador_parallel.o"
 	@echo "... visualizador_parallel.i"
 	@echo "... visualizador_parallel.s"

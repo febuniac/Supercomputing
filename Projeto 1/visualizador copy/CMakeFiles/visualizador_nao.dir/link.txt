@@ -1,1 +1,1 @@
-/Library/Developer/CommandLineTools/usr/bin/c++   -fopenmp -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.o  -o visualizador_nao 
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.o  -o visualizador_nao 
