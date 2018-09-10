@@ -65,6 +65,43 @@ CMAKE_SOURCE_DIR = "/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualiz
 CMAKE_BINARY_DIR = "/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy"
 
 #=============================================================================
+# Target rules for target CMakeFiles/visualizador_parallel.dir
+
+# All Build rule for target.
+CMakeFiles/visualizador_parallel.dir/all:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/depend
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles" --progress-num=4,5 "Built target visualizador_parallel"
+.PHONY : CMakeFiles/visualizador_parallel.dir/all
+
+# Include target in all.
+all: CMakeFiles/visualizador_parallel.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/visualizador_parallel.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles" 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/visualizador_parallel.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy/CMakeFiles" 0
+.PHONY : CMakeFiles/visualizador_parallel.dir/rule
+
+# Convenience name for target.
+visualizador_parallel: CMakeFiles/visualizador_parallel.dir/rule
+
+.PHONY : visualizador_parallel
+
+# clean rule for target.
+CMakeFiles/visualizador_parallel.dir/clean:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/clean
+.PHONY : CMakeFiles/visualizador_parallel.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/visualizador_parallel.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/visualizador.dir
 
 # All Build rule for target.

@@ -131,7 +131,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=visualizador
+CMAKE_PROJECT_NAME:STATIC=visualizador_parallel
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -209,6 +209,12 @@ visualizador_BINARY_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/Projeto
 
 //Value Computed by CMake
 visualizador_SOURCE_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy
+
+//Value Computed by CMake
+visualizador_parallel_BINARY_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy
+
+//Value Computed by CMake
+visualizador_parallel_SOURCE_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/Projeto 1/visualizador copy
 
 
 ########################
@@ -422,5 +428,34 @@ SDL2_sdl2_PREFIX:INTERNAL=
 SDL2_sdl2_VERSION:INTERNAL=
 __pkg_config_checked_SDL2:INTERNAL=1
 __pkg_config_checked_SDL2_gfx:INTERNAL=1
+__pkg_config_checked_amp:INTERNAL=1
+amp_CFLAGS:INTERNAL=
+amp_CFLAGS_I:INTERNAL=
+amp_CFLAGS_OTHER:INTERNAL=
+amp_FOUND:INTERNAL=
+amp_INCLUDEDIR:INTERNAL=
+amp_LIBDIR:INTERNAL=
+amp_LIBS:INTERNAL=
+amp_LIBS_L:INTERNAL=
+amp_LIBS_OTHER:INTERNAL=
+amp_LIBS_PATHS:INTERNAL=
+amp_PREFIX:INTERNAL=
+amp_STATIC_CFLAGS:INTERNAL=
+amp_STATIC_CFLAGS_I:INTERNAL=
+amp_STATIC_CFLAGS_OTHER:INTERNAL=
+amp_STATIC_LIBDIR:INTERNAL=
+amp_STATIC_LIBS:INTERNAL=
+amp_STATIC_LIBS_L:INTERNAL=
+amp_STATIC_LIBS_OTHER:INTERNAL=
+amp_STATIC_LIBS_PATHS:INTERNAL=
+amp_VERSION:INTERNAL=
+amp_amp.h_INCLUDEDIR:INTERNAL=
+amp_amp.h_LIBDIR:INTERNAL=
+amp_amp.h_PREFIX:INTERNAL=
+amp_amp.h_VERSION:INTERNAL=
+amp_omp.h_INCLUDEDIR:INTERNAL=
+amp_omp.h_LIBDIR:INTERNAL=
+amp_omp.h_PREFIX:INTERNAL=
+amp_omp.h_VERSION:INTERNAL=
 prefix_result:INTERNAL=/usr/local/Cellar/sdl2_gfx/1.0.4/lib
 

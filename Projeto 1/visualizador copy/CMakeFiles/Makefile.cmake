@@ -50,5 +50,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/visualizador_parallel.dir/DependInfo.cmake"
   "CMakeFiles/visualizador.dir/DependInfo.cmake"
   )

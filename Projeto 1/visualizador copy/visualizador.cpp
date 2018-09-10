@@ -89,10 +89,14 @@ void Visualizador::draw() {
 void Visualizador::run() {
     SDL_ShowWindow(win);
     draw();
+    Time::time_point t1 = Time::now();
     while (!SDL_QuitRequested()) {
         do_iteration();       
         draw();
     }
+    Time::time_point t2 = Time::now();
+   std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double > >(t2 - t1);
+    std::cout << "Tempo de duração" <<" "<< time_span.count()<<'\n';
   //Para de escrever no GUI 
     myfile.close(); 
 }

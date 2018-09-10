@@ -1,3 +1,7 @@
+int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
+    int proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
+    // for (int i = 0; i < (bodies.size()); i++){
+    //   for (int j = i+1; j < (bodies.size()); j++){
 void Visualizador::ball_hit_ball(){
     int hipotenusa;
     int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
@@ -51,6 +55,29 @@ void Visualizador::ball_hit_ball(){
           // else if{
 
           // }
+        }
+      }
+    }
+  }
+
+
+  void Visualizador::ball_hit_ball(){
+    for (int i = 0; i < (bodies.size()); i++){
+      for (int j = i+1; j < (bodies.size()); j++){
+        double cateto1 =(bodies[i].x - bodies[j].x);
+        double cateto2 = (bodies[i].y - bodies[j].y);
+        int hipotenusa =  sqrt(pow(cateto1,2)+pow(cateto2,2));
+        if (hipotenusa < (bodies[i].radius + bodies[j].radius)){
+          printf("Choque de Bolas!");
+          
+          //BOLA1
+          bodies[i].vx = (bodies[i].vx*(bodies[i].mass-bodies[j].mass)+2*bodies[j].vx*bodies[j].mass)/(bodies[i].mass+bodies[j].mass);
+          bodies[i].vy = (bodies[i].vy*(bodies[i].mass-bodies[j].mass)+2*bodies[j].vy*bodies[j].mass)/(bodies[i].mass+bodies[j].mass);
+          //BOLA2
+          bodies[j].vx = (bodies[j].vx*(bodies[j].mass-bodies[i].mass)+2*bodies[i].vx*bodies[i].mass)/(bodies[j].mass+bodies[i].mass);;
+          bodies[j].vy = (bodies[j].vy*(bodies[j].mass-bodies[i].mass)+2*bodies[i].vy*bodies[i].mass)/(bodies[j].mass+bodies[i].mass);;
+
+          
         }
       }
     }

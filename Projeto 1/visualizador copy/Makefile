@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named visualizador_parallel
+
+# Build rule for target.
+visualizador_parallel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualizador_parallel
+.PHONY : visualizador_parallel
+
+# fast build rule for target.
+visualizador_parallel/fast:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/build
+.PHONY : visualizador_parallel/fast
+
+#=============================================================================
 # Target rules for targets named visualizador
 
 # Build rule for target.
@@ -177,6 +190,33 @@ visualizador.cpp.s:
 	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/visualizador.cpp.s
 .PHONY : visualizador.cpp.s
 
+visualizador_parallel.o: visualizador_parallel.cpp.o
+
+.PHONY : visualizador_parallel.o
+
+# target to build an object file
+visualizador_parallel.cpp.o:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/visualizador_parallel.cpp.o
+.PHONY : visualizador_parallel.cpp.o
+
+visualizador_parallel.i: visualizador_parallel.cpp.i
+
+.PHONY : visualizador_parallel.i
+
+# target to preprocess a source file
+visualizador_parallel.cpp.i:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/visualizador_parallel.cpp.i
+.PHONY : visualizador_parallel.cpp.i
+
+visualizador_parallel.s: visualizador_parallel.cpp.s
+
+.PHONY : visualizador_parallel.s
+
+# target to generate assembly for a file
+visualizador_parallel.cpp.s:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/visualizador_parallel.cpp.s
+.PHONY : visualizador_parallel.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -185,6 +225,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... visualizador_parallel"
 	@echo "... visualizador"
 	@echo "... main.o"
 	@echo "... main.i"
@@ -192,6 +233,9 @@ help:
 	@echo "... visualizador.o"
 	@echo "... visualizador.i"
 	@echo "... visualizador.s"
+	@echo "... visualizador_parallel.o"
+	@echo "... visualizador_parallel.i"
+	@echo "... visualizador_parallel.s"
 .PHONY : help
 
 
