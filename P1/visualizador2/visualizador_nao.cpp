@@ -1,3 +1,4 @@
+#include <omp.h>
 #include <iostream>
 #include <vector>
 #include <chrono>
@@ -5,7 +6,6 @@
 #include <stdio.h>
 #include <iterator>
 #include <math.h>
-#include <omp.h>
 
 struct simulacao s;
 struct _ball b;
@@ -20,14 +20,53 @@ void testes(std::vector<ball> &bodies, simulacao s, double delta_t,long iter){
     for(long n = 0; n<iter; n++){ 
         double delta_t=0.01;
         //ballmove
-
+        
         for (int i = 0; i < (bodies.size()); i++){ 
-        bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);     
+       int g = 10;
+       int acel= s.mu *bodies[i].mass *g;
+       
+  
+        bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);
         bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
+
+        if(bodies[i].vx>0){
+            if (bodies[i].vx - acel*delta_t <= 0){
+            bodies[i].vx = 0;
+            }
+            else{
+            bodies[i].vx -= acel*delta_t; 
+            }    
+        }
+        else{
+            if (bodies[i].vx + acel*delta_t >= 0){
+                bodies[i].vx = 0;
+            }
+            else{
+                bodies[i].vx += acel*delta_t; 
+            }  
         }
 
-        //ballhitball
+        if(bodies[i].vy>0){
+            if (bodies[i].vy - acel*delta_t <= 0){
+                bodies[i].vy = 0;
+            }
+            else{
 
+                bodies[i].vy -= acel*delta_t; 
+            }    
+        }
+        else{
+            if (bodies[i].vy + acel*delta_t >= 0){
+                bodies[i].vy = 0;
+            }
+            else{
+                bodies[i].vy += acel*delta_t; 
+            }  
+        }
+    }
+
+        //ballhitball
+        
         for (int i = 0; i < (bodies.size()); i++){
             for (int j = i+1; j < (bodies.size()); j++){
                 double cateto1 =(bodies[i].x - bodies[j].x);
@@ -78,7 +117,7 @@ void testes(std::vector<ball> &bodies, simulacao s, double delta_t,long iter){
             }
 
         // ball hit wall
-
+       
         for (int i = 0; i <= (bodies.size()); i++){
             if((bodies[i].x - bodies[i].radius)<=0){
             printf("colisão com parede da esquerda");
@@ -113,7 +152,6 @@ std::vector<ball> save_to_vec(std::vector<ball> &list_balls){
   read_file();
   //criando listas de bolas //for que vai lendo e jogando no lista de bolas
   std::cout<<s.n;
-
   for (int i = 0; i < s.n; i++){
     cin >>b.id >>b.radius >> b.mass>>b.x>> b.y>> b.vx>> b.vy;
     list_balls.push_back(b);
@@ -127,7 +165,7 @@ int main(int argc, char const *argv[])
     std::vector<ball> list_balls;
     save_to_vec(list_balls);
     Time::time_point t1 = Time::now();
-    testes(list_balls,s,0.01,1000);
+    testes(list_balls,s,0.01,10000);
     Time::time_point t2 = Time::now();
     duration<double> time_span = duration_cast<duration<double> >(t2 - t1);
     std::cout << "Tempo:" << time_span.count()<<'\n';

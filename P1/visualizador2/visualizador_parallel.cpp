@@ -22,9 +22,48 @@ void testes(std::vector<ball> &bodies, simulacao s, double delta_t,long iter){
         //ballmove
         #pragma omp parallel for
         for (int i = 0; i < (bodies.size()); i++){ 
-        bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);     
+       int g = 10;
+       int acel= s.mu *bodies[i].mass *g;
+       
+  
+        bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);
         bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
+
+        if(bodies[i].vx>0){
+            if (bodies[i].vx - acel*delta_t <= 0){
+            bodies[i].vx = 0;
+            }
+            else{
+            bodies[i].vx -= acel*delta_t; 
+            }    
         }
+        else{
+            if (bodies[i].vx + acel*delta_t >= 0){
+                bodies[i].vx = 0;
+            }
+            else{
+                bodies[i].vx += acel*delta_t; 
+            }  
+        }
+
+        if(bodies[i].vy>0){
+            if (bodies[i].vy - acel*delta_t <= 0){
+                bodies[i].vy = 0;
+            }
+            else{
+
+                bodies[i].vy -= acel*delta_t; 
+            }    
+        }
+        else{
+            if (bodies[i].vy + acel*delta_t >= 0){
+                bodies[i].vy = 0;
+            }
+            else{
+                bodies[i].vy += acel*delta_t; 
+            }  
+        }
+    }
 
         //ballhitball
         #pragma omp parallel for
@@ -34,7 +73,7 @@ void testes(std::vector<ball> &bodies, simulacao s, double delta_t,long iter){
                 double cateto2 = (bodies[i].y - bodies[j].y);
                 int hipotenusa =  sqrt(pow(cateto1,2)+pow(cateto2,2));
                 if (hipotenusa <(bodies[i].radius + bodies[j].radius)){//Checando colisão
-                // if ((bodies[i].radius + bodies[j].radius)<=hipotenusa) {
+                
                 printf("Choque de Bolas! \n");
                 cout<<" A:"<<bodies[i].id<<"\n"<<"B:"<< bodies[j].id<<"\n";
                 
@@ -113,7 +152,6 @@ std::vector<ball> save_to_vec(std::vector<ball> &list_balls){
   read_file();
   //criando listas de bolas //for que vai lendo e jogando no lista de bolas
   std::cout<<s.n;
-  #pragma omp parallel for
   for (int i = 0; i < s.n; i++){
     cin >>b.id >>b.radius >> b.mass>>b.x>> b.y>> b.vx>> b.vy;
     list_balls.push_back(b);
@@ -127,7 +165,7 @@ int main(int argc, char const *argv[])
     std::vector<ball> list_balls;
     save_to_vec(list_balls);
     Time::time_point t1 = Time::now();
-    testes(list_balls,s,0.01,1000);
+    testes(list_balls,s,0.01,10000);
     Time::time_point t2 = Time::now();
     duration<double> time_span = duration_cast<duration<double> >(t2 - t1);
     std::cout << "Tempo:" << time_span.count()<<'\n';

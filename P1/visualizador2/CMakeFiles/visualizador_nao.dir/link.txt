@@ -1,0 +1,1 @@
+/usr/local/bin/g++-8   -fopenmp -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.o  -o visualizador_nao 

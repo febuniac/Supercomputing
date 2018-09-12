@@ -45,7 +45,9 @@ Visualizador::Visualizador(std::vector<ball> &bodies, simulacao s, double delta_
     delta_t(delta_t),
     GUI(GUI),
     s(s),
-    bodies(bodies) {
+    bodiesprox(bodies),
+    bodies(bodies)
+    {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
     double ratio = (double) s.field_width / s.field_height;
     if (ratio > 1) {
@@ -98,7 +100,8 @@ void Visualizador::run() {
     Time::time_point t2 = Time::now();
    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double > >(t2 - t1);
     std::cout << "Tempo de duração" <<" "<< time_span.count()<<'\n';
-  //Para de escrever no GUI 
+    bodies = bodiesprox;
+  //Parar de escrever no GUI 
     myfile.close(); 
 }
 
@@ -112,48 +115,41 @@ double Visualizador::ball_move(){//Funções de movimento das bolas
     //list_balls2 = new
     
     for (int i = 0; i < (bodies.size()); i++){ 
-       int g = 10;
+       float g = 9.8;
        int acel= s.mu *bodies[i].mass *g;
-       
+       int acel_x=acel*(bodiesprox[i].vx/(sqrt(pow(bodiesprox[i].vx,2)+pow(bodiesprox[i].vy,2))));//a*cos (cos=vx/hip)
+       int acel_y=acel*(bodiesprox[i].vy/sqrt(pow(bodiesprox[i].vx,2)+pow(bodiesprox[i].vy,2)));//a*sen (sen=vy/hip)
   
-        bodies[i].x = bodies[i].x + (bodies[i].vx*delta_t);
-        bodies[i].y = bodies[i].y + (bodies[i].vy*delta_t);
-
+        bodiesprox[i].x = bodies[i].x + (bodies[i].vx*delta_t);
+        bodiesprox[i].y = bodies[i].y + (bodies[i].vy*delta_t);
         if(bodies[i].vx>0){
-            if (bodies[i].vx - acel*delta_t <= 0){
-            bodies[i].vx = 0;
+            bodiesprox[i].vx = bodies[i].vx - delta_t * acel_x;
+            if(bodiesprox[i].vx<0){
+                bodiesprox[i].vx = 0;
             }
-            else{
-            bodies[i].vx -= acel*delta_t; 
-            }    
         }
         else{
-            if (bodies[i].vx + acel*delta_t >= 0){
-                bodies[i].vx = 0;
+           bodiesprox[i].vx = bodies[i].vx + delta_t * acel_x;
+            if(bodiesprox[i].vx>0){
+                bodiesprox[i].vx = 0;
             }
-            else{
-                bodies[i].vx += acel*delta_t; 
-            }  
         }
-
+        
         if(bodies[i].vy>0){
-            if (bodies[i].vy - acel*delta_t <= 0){
-                bodies[i].vy = 0;
+            bodiesprox[i].vy = bodies[i].vy - delta_t * acel_y;
+            if(bodiesprox[i].vy<0){
+                bodiesprox[i].vy = 0;
             }
-            else{
-
-                bodies[i].vy -= acel*delta_t; 
-            }    
         }
         else{
-            if (bodies[i].vy + acel*delta_t >= 0){
-                bodies[i].vy = 0;
+            bodiesprox[i].vy = bodies[i].vy + delta_t * acel_y;
+            if(bodiesprox[i].vy>0){
+                bodiesprox[i].vy = 0;
             }
-            else{
-                bodies[i].vy += acel*delta_t; 
-            }  
         }
     }
+
+      
   return atualiza_x, atualiza_y;
 }
 
@@ -161,82 +157,68 @@ void Visualizador::read_file(){
   if (!(cin >> s.field_width >> s.field_height >> s.n)) { throw 1; }
   if (!(cin >> s.mu >> s.alpha_w >> s.alpha_b)) { throw 1; }
 }
-int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
-    int proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
+// double proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
+// double proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
 void Visualizador::ball_hit_ball(){
-    int hipotenusa;
-    int proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
-    int proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
+    double hipotenusa;
+    double proj_j,vjhip_x,vjhip_y,vjhip_parallel,vjhip_parallel_x,vjhip_parallel_y,vjhip_espelhado,vjhip_espelhado_x,vjhip_espelhado_y,novo_vetor_j,novo_vetor_j_x,novo_vetor_j_y;
+    double proj_i,vihip_x,vihip_y,vihip_parallel,vihip_parallel_x,vihip_parallel_y,vihip_espelhado,vihip_espelhado_x,vihip_espelhado_y,novo_vetor_i,novo_vetor_i_x,novo_vetor_i_y;
     for (int i = 0; i < (bodies.size()); i++){
       for (int j = i+1; j < (bodies.size()); j++){
-        double cateto1 =(bodies[i].x - bodies[j].x);
-        double cateto2 = (bodies[i].y - bodies[j].y);
-        hipotenusa =  sqrt(pow(cateto1,2)+pow(cateto2,2));
-        if (hipotenusa <(bodies[i].radius + bodies[j].radius)){//Checando colisão
-          // if ((bodies[i].radius + bodies[j].radius)<=hipotenusa) {
-          printf("Choque de Bolas! \n");
-          cout<<" A:"<<bodies[i].id<<"\n"<<"B:"<< bodies[j].id<<"\n";
-          
-          //BOLA1 A
-          proj_j = (bodies[j].vx*cateto1+bodies[j].vy*cateto2)/(hipotenusa);//Constante de projeção da Bola1
-          vjhip_x = (proj_j*cateto1)/hipotenusa;
-          vjhip_y = (proj_j*cateto2)/hipotenusa;
-          
-          vjhip_parallel_x = bodies[j].vx-vjhip_x;
-          vjhip_parallel_y = bodies[j].vy-vjhip_y;
-         
-          vjhip_espelhado_x = -(vjhip_x);
-          vjhip_espelhado_y = -(vjhip_y);
-         
-          bodies[j].vx = vjhip_espelhado_x - vjhip_parallel_x;//novo_vetor_j_x
-          bodies[j].vy = vjhip_espelhado_y - vjhip_parallel_y;//novo_vetor_j_y
-
-          //BOLA2 B
-          proj_i = (bodies[i].vx*cateto1+bodies[i].vy*cateto2)/(hipotenusa);//Constante de projeção da Bola2
-          vihip_x = (proj_i*cateto1)/hipotenusa;
-          vihip_y = (proj_i*cateto2)/hipotenusa;
-          
-          vihip_parallel_x = bodies[i].vx-vihip_x;
-          vihip_parallel_y = bodies[i].vy-vihip_y;
+        double cateto1 = (bodiesprox[i].x - bodiesprox[j].x);
+        double cateto2 = (bodiesprox[i].y - bodiesprox[j].y);
         
-          vihip_espelhado_x = -(vihip_x);
-          vihip_espelhado_y = -(vihip_y);
-   
-          bodies[i].vx = vihip_espelhado_x - vihip_parallel_x;//novo_vetor_i_x
-          bodies[i].vy = vihip_espelhado_y - vihip_parallel_y;//novo_vetor_i_y
-          if ( (proj_i>0 &proj_j<0)){//|(proj_i<0 &proj_j>0)
-            proj_i=--proj_i;
-            proj_j=-proj_j;
-          }
-          if((proj_i>0 &proj_j>0)){//|(proj_i<0 &proj_j<0) 
-              proj_j=-proj_j;
-          }
+        hipotenusa =  sqrt(pow(cateto1,2)+pow(cateto2,2));
+        double soma_r = (bodiesprox[i].radius + bodiesprox[j].radius);
+        if (hipotenusa < soma_r){//Checando colisão
+            myfile.open ("GUI.txt");
+            if(GUI == 0){
+                myfile <<"CHOQUE:"<<" A:"<<bodies[i].id<<"\n"<<"B:"<< bodies[j].id<<"\n";
+            }
+            bodiesprox[i].x = bodies[i].x;
+            bodiesprox[i].y = bodies[i].y;
+            bodiesprox[j].x = bodies[j].x;
+            bodiesprox[j].y = bodies[j].y;
+        
+          
+          //BOLA1
+          bodiesprox[i].vx = (bodies[i].vx*(bodies[i].mass-bodies[j].mass)+2*bodies[j].vx*bodies[j].mass)/(bodies[i].mass+bodies[j].mass);
+          bodiesprox[i].vy = (bodies[i].vy*(bodies[i].mass-bodies[j].mass)+2*bodies[j].vy*bodies[j].mass)/(bodies[i].mass+bodies[j].mass);
+          //BOLA2
+          bodiesprox[j].vx = (bodies[j].vx*(bodies[j].mass-bodies[i].mass)+2*bodies[i].vx*bodies[i].mass)/(bodies[j].mass+bodies[i].mass);;
+          bodiesprox[j].vy = (bodies[j].vy*(bodies[j].mass-bodies[i].mass)+2*bodies[i].vy*bodies[i].mass)/(bodies[j].mass+bodies[i].mass);;
         }
       }
     }
+    myfile.close(); 
   }
 
 void Visualizador::ball_hit_wall(){
   for (int i = 0; i <= (bodies.size()); i++){
-    if((bodies[i].x - bodies[i].radius)<=0){
-      printf("colisão com parede da esquerda");
-      bodies[i].vx = -bodies[i].vx;
-      cout<< "vx esq"<<bodies[i].vx << endl;
+    if((bodiesprox[i].x - bodiesprox[i].radius)<=0){
+      //printf("colisão com parede da esquerda");
+      bodiesprox[i].vx = -bodiesprox[i].vx;
+      bodiesprox[i].x = bodies[i].x;
+
+      //cout<< "vx esq"<<bodies[i].vx << endl;
     }
-    else if((bodies[i].y - bodies[i].radius)<=0){
-      printf("colisão com parede de baixo");
-      bodies[i].vy = -bodies[i].vy;
-      cout<< "vx baix"<<bodies[i].vy<< endl;
+    else if((bodiesprox[i].y - bodiesprox[i].radius)<=0){
+      //printf("colisão com parede de baixo");
+      bodiesprox[i].vy = -bodiesprox[i].vy;
+      bodiesprox[i].y = bodies[i].y;
+      //cout<< "vx baix"<<bodies[i].vy<< endl;
     }
-    else if((bodies[i].y +bodies[i].radius)>=s.field_height){
-      printf("colisão com parede de cima");
-      bodies[i].vy = -bodies[i].vy;
-      cout<< "vx cim"<<bodies[i].vy<< endl;
+    else if((bodiesprox[i].y +bodiesprox[i].radius)>=s.field_height){
+      //printf("colisão com parede de cima");
+      bodiesprox[i].vy = -bodiesprox[i].vy;
+      bodiesprox[i].y = bodies[i].y;
+      //cout<< "vx cim"<<bodies[i].vy<< endl;
     }
-    else if((bodies[i].x + bodies[i].radius)>= s.field_width){
-      printf("colisão com parede da direita");
-      bodies[i].vx = -bodies[i].vx;
-      cout<< "vx dir"<<bodies[i].vx<< endl;
+    else if((bodiesprox[i].x + bodiesprox[i].radius)>= s.field_width){
+      //printf("colisão com parede da direita");
+      bodiesprox[i].vx = -bodiesprox[i].vx;
+      //cout<< "vx dir"<<bodies[i].vx<< endl;
+      bodiesprox[i].x = bodies[i].x;
     }
   }
 }
@@ -249,9 +231,9 @@ void Visualizador::do_iteration() {
   for (unsigned g = 0; g < bodies.size(); g++){
       //escerevndo no GUI
       if(GUI == 0){
-          myfile <<"("<<bodies[g].id<<","<<bodies[g].radius<<","<<bodies[g].mass<<","
-                <<bodies[g].x<<","<<bodies[g].y<<","<<bodies[g].vx
-                <<","<<bodies[g].vy<<")"<<";";
+          myfile <<"("<<bodiesprox[g].id<<","<<bodiesprox[g].radius<<","<<bodiesprox[g].mass<<","
+                <<bodiesprox[g].x<<","<<bodiesprox[g].y<<","<<bodiesprox[g].vx
+                <<","<<bodiesprox[g].vy<<")"<<";";
       }
   }
     Visualizador::ball_move();

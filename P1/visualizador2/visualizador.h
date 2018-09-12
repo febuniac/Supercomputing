@@ -73,6 +73,7 @@ private:
     int win_width, win_height;
     int field_width, field_height;
     std::vector<ball> &bodies;
+    std::vector<ball> &bodiesprox;
 
     const int max_dimension = 700;
 

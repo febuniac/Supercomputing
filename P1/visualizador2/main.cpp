@@ -29,6 +29,7 @@
 #include <vector>
 #include <iterator>
 #include <math.h>
+#include <omp.h>
 
 using namespace std;
 struct simulacao s;

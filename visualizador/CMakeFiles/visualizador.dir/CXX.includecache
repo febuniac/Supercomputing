@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/felipebuniac/Github/Supercomputing/visualizador/body.h
+
+/Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.cpp
+visualizador.h
+/Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.h
+SDL2/SDL.h
+/Users/felipebuniac/Github/Supercomputing/visualizador/SDL2/SDL.h
+SDL2/SDL2_gfxPrimitives.h
+/Users/felipebuniac/Github/Supercomputing/visualizador/SDL2/SDL2_gfxPrimitives.h
+stdio.h
+-
+chrono
+-
+iostream
+-
+vector
+-
+iterator
+-
+fstream
+-
+omp.h
+-
+
+/Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.h
+SDL2/SDL.h
+/Users/felipebuniac/Github/Supercomputing/visualizador/SDL2/SDL.h
+body.h
+/Users/felipebuniac/Github/Supercomputing/visualizador/body.h
+vector
+-
+

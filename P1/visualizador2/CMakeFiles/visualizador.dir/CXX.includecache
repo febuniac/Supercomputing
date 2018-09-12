@@ -8,6 +8,22 @@
 
 /Users/felipebuniac/Github/Supercomputing/P1/visualizador2/body.h
 
+/Users/felipebuniac/Github/Supercomputing/P1/visualizador2/main.cpp
+visualizador.h
+/Users/felipebuniac/Github/Supercomputing/P1/visualizador2/visualizador.h
+stdio.h
+-
+iostream
+-
+vector
+-
+iterator
+-
+math.h
+-
+omp.h
+-
+
 /Users/felipebuniac/Github/Supercomputing/P1/visualizador2/visualizador.cpp
 visualizador.h
 /Users/felipebuniac/Github/Supercomputing/P1/visualizador2/visualizador.h
