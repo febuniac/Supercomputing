@@ -10,6 +10,16 @@
         "stdexcept": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "__split_buffer": "cpp",
+        "bitset": "cpp",
+        "iterator": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "fstream": "cpp",
+        "locale": "cpp",
+        "chrono": "cpp"
     }
 }

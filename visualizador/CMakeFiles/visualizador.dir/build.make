@@ -60,28 +60,28 @@ include CMakeFiles/visualizador.dir/flags.make
 CMakeFiles/visualizador.dir/main.cpp.o: CMakeFiles/visualizador.dir/flags.make
 CMakeFiles/visualizador.dir/main.cpp.o: main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/visualizador.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/visualizador.dir/main.cpp.o -c /Users/felipebuniac/Github/Supercomputing/visualizador/main.cpp
+	/usr/local/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/visualizador.dir/main.cpp.o -c /Users/felipebuniac/Github/Supercomputing/visualizador/main.cpp
 
 CMakeFiles/visualizador.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/visualizador.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/felipebuniac/Github/Supercomputing/visualizador/main.cpp > CMakeFiles/visualizador.dir/main.cpp.i
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/felipebuniac/Github/Supercomputing/visualizador/main.cpp > CMakeFiles/visualizador.dir/main.cpp.i
 
 CMakeFiles/visualizador.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/visualizador.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/felipebuniac/Github/Supercomputing/visualizador/main.cpp -o CMakeFiles/visualizador.dir/main.cpp.s
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/felipebuniac/Github/Supercomputing/visualizador/main.cpp -o CMakeFiles/visualizador.dir/main.cpp.s
 
 CMakeFiles/visualizador.dir/visualizador.cpp.o: CMakeFiles/visualizador.dir/flags.make
 CMakeFiles/visualizador.dir/visualizador.cpp.o: visualizador.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/visualizador.dir/visualizador.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/visualizador.dir/visualizador.cpp.o -c /Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.cpp
+	/usr/local/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/visualizador.dir/visualizador.cpp.o -c /Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.cpp
 
 CMakeFiles/visualizador.dir/visualizador.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/visualizador.dir/visualizador.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.cpp > CMakeFiles/visualizador.dir/visualizador.cpp.i
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.cpp > CMakeFiles/visualizador.dir/visualizador.cpp.i
 
 CMakeFiles/visualizador.dir/visualizador.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/visualizador.dir/visualizador.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.cpp -o CMakeFiles/visualizador.dir/visualizador.cpp.s
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/felipebuniac/Github/Supercomputing/visualizador/visualizador.cpp -o CMakeFiles/visualizador.dir/visualizador.cpp.s
 
 # Object files for target visualizador
 visualizador_OBJECTS = \

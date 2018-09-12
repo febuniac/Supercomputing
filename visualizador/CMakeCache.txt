@@ -131,7 +131,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=visualizador
+CMAKE_PROJECT_NAME:STATIC=visualizador_nao
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -209,6 +209,18 @@ visualizador_BINARY_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/visuali
 
 //Value Computed by CMake
 visualizador_SOURCE_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/visualizador
+
+//Value Computed by CMake
+visualizador_nao_BINARY_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/visualizador
+
+//Value Computed by CMake
+visualizador_nao_SOURCE_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/visualizador
+
+//Value Computed by CMake
+visualizador_parallel_BINARY_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/visualizador
+
+//Value Computed by CMake
+visualizador_parallel_SOURCE_DIR:STATIC=/Users/felipebuniac/Github/Supercomputing/visualizador
 
 
 ########################

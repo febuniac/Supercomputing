@@ -56,8 +56,7 @@ std::vector<ball> save_to_vec(std::vector<ball> &list_balls){
 int main(int argc, char ** argv) {
         std::vector<ball> list_balls;
         save_to_vec(list_balls);
-        Visualizador v(list_balls, s, 0.01,0);
-        printf("x=%f \n", list_balls[0]);
+        Visualizador v(list_balls, s, 0.01,0,0);
         v.run();
     return 0; 
 }

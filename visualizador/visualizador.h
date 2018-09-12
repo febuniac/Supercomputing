@@ -49,8 +49,9 @@ public:
     int GUI;
     struct simulacao s;
     struct _ball b;
+    int COLLISIONS;
 
-    Visualizador(std::vector<ball> &bodies,simulacao s, double delta_t,int GUI);
+    Visualizador(std::vector<ball> &bodies,simulacao s, double delta_t,int GUI,int COLLISIONS);
     ~Visualizador();
 
     void do_iteration();

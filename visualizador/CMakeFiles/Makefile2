@@ -65,6 +65,80 @@ CMAKE_SOURCE_DIR = /Users/felipebuniac/Github/Supercomputing/visualizador
 CMAKE_BINARY_DIR = /Users/felipebuniac/Github/Supercomputing/visualizador
 
 #=============================================================================
+# Target rules for target CMakeFiles/visualizador_nao.dir
+
+# All Build rule for target.
+CMakeFiles/visualizador_nao.dir/all:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/depend
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles --progress-num=4,5,6 "Built target visualizador_nao"
+.PHONY : CMakeFiles/visualizador_nao.dir/all
+
+# Include target in all.
+all: CMakeFiles/visualizador_nao.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/visualizador_nao.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/visualizador_nao.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles 0
+.PHONY : CMakeFiles/visualizador_nao.dir/rule
+
+# Convenience name for target.
+visualizador_nao: CMakeFiles/visualizador_nao.dir/rule
+
+.PHONY : visualizador_nao
+
+# clean rule for target.
+CMakeFiles/visualizador_nao.dir/clean:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/clean
+.PHONY : CMakeFiles/visualizador_nao.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/visualizador_nao.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/visualizador_parallel.dir
+
+# All Build rule for target.
+CMakeFiles/visualizador_parallel.dir/all:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/depend
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles --progress-num=7,8,9 "Built target visualizador_parallel"
+.PHONY : CMakeFiles/visualizador_parallel.dir/all
+
+# Include target in all.
+all: CMakeFiles/visualizador_parallel.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/visualizador_parallel.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/visualizador_parallel.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/felipebuniac/Github/Supercomputing/visualizador/CMakeFiles 0
+.PHONY : CMakeFiles/visualizador_parallel.dir/rule
+
+# Convenience name for target.
+visualizador_parallel: CMakeFiles/visualizador_parallel.dir/rule
+
+.PHONY : visualizador_parallel
+
+# clean rule for target.
+CMakeFiles/visualizador_parallel.dir/clean:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/clean
+.PHONY : CMakeFiles/visualizador_parallel.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/visualizador_parallel.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/visualizador.dir
 
 # All Build rule for target.

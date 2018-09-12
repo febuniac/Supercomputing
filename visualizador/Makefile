@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named visualizador_nao
+
+# Build rule for target.
+visualizador_nao: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualizador_nao
+.PHONY : visualizador_nao
+
+# fast build rule for target.
+visualizador_nao/fast:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/build
+.PHONY : visualizador_nao/fast
+
+#=============================================================================
+# Target rules for targets named visualizador_parallel
+
+# Build rule for target.
+visualizador_parallel: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 visualizador_parallel
+.PHONY : visualizador_parallel
+
+# fast build rule for target.
+visualizador_parallel/fast:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/build
+.PHONY : visualizador_parallel/fast
+
+#=============================================================================
 # Target rules for targets named visualizador
 
 # Build rule for target.
@@ -150,6 +176,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+main_nao.o: main_nao.cpp.o
+
+.PHONY : main_nao.o
+
+# target to build an object file
+main_nao.cpp.o:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/main_nao.cpp.o
+.PHONY : main_nao.cpp.o
+
+main_nao.i: main_nao.cpp.i
+
+.PHONY : main_nao.i
+
+# target to preprocess a source file
+main_nao.cpp.i:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/main_nao.cpp.i
+.PHONY : main_nao.cpp.i
+
+main_nao.s: main_nao.cpp.s
+
+.PHONY : main_nao.s
+
+# target to generate assembly for a file
+main_nao.cpp.s:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/main_nao.cpp.s
+.PHONY : main_nao.cpp.s
+
+main_parallel.o: main_parallel.cpp.o
+
+.PHONY : main_parallel.o
+
+# target to build an object file
+main_parallel.cpp.o:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/main_parallel.cpp.o
+.PHONY : main_parallel.cpp.o
+
+main_parallel.i: main_parallel.cpp.i
+
+.PHONY : main_parallel.i
+
+# target to preprocess a source file
+main_parallel.cpp.i:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/main_parallel.cpp.i
+.PHONY : main_parallel.cpp.i
+
+main_parallel.s: main_parallel.cpp.s
+
+.PHONY : main_parallel.s
+
+# target to generate assembly for a file
+main_parallel.cpp.s:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/main_parallel.cpp.s
+.PHONY : main_parallel.cpp.s
+
 visualizador.o: visualizador.cpp.o
 
 .PHONY : visualizador.o
@@ -177,6 +257,60 @@ visualizador.cpp.s:
 	$(MAKE) -f CMakeFiles/visualizador.dir/build.make CMakeFiles/visualizador.dir/visualizador.cpp.s
 .PHONY : visualizador.cpp.s
 
+visualizador_nao.o: visualizador_nao.cpp.o
+
+.PHONY : visualizador_nao.o
+
+# target to build an object file
+visualizador_nao.cpp.o:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.o
+.PHONY : visualizador_nao.cpp.o
+
+visualizador_nao.i: visualizador_nao.cpp.i
+
+.PHONY : visualizador_nao.i
+
+# target to preprocess a source file
+visualizador_nao.cpp.i:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.i
+.PHONY : visualizador_nao.cpp.i
+
+visualizador_nao.s: visualizador_nao.cpp.s
+
+.PHONY : visualizador_nao.s
+
+# target to generate assembly for a file
+visualizador_nao.cpp.s:
+	$(MAKE) -f CMakeFiles/visualizador_nao.dir/build.make CMakeFiles/visualizador_nao.dir/visualizador_nao.cpp.s
+.PHONY : visualizador_nao.cpp.s
+
+visualizador_parallel.o: visualizador_parallel.cpp.o
+
+.PHONY : visualizador_parallel.o
+
+# target to build an object file
+visualizador_parallel.cpp.o:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/visualizador_parallel.cpp.o
+.PHONY : visualizador_parallel.cpp.o
+
+visualizador_parallel.i: visualizador_parallel.cpp.i
+
+.PHONY : visualizador_parallel.i
+
+# target to preprocess a source file
+visualizador_parallel.cpp.i:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/visualizador_parallel.cpp.i
+.PHONY : visualizador_parallel.cpp.i
+
+visualizador_parallel.s: visualizador_parallel.cpp.s
+
+.PHONY : visualizador_parallel.s
+
+# target to generate assembly for a file
+visualizador_parallel.cpp.s:
+	$(MAKE) -f CMakeFiles/visualizador_parallel.dir/build.make CMakeFiles/visualizador_parallel.dir/visualizador_parallel.cpp.s
+.PHONY : visualizador_parallel.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -185,13 +319,27 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... visualizador_nao"
+	@echo "... visualizador_parallel"
 	@echo "... visualizador"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... main_nao.o"
+	@echo "... main_nao.i"
+	@echo "... main_nao.s"
+	@echo "... main_parallel.o"
+	@echo "... main_parallel.i"
+	@echo "... main_parallel.s"
 	@echo "... visualizador.o"
 	@echo "... visualizador.i"
 	@echo "... visualizador.s"
+	@echo "... visualizador_nao.o"
+	@echo "... visualizador_nao.i"
+	@echo "... visualizador_nao.s"
+	@echo "... visualizador_parallel.o"
+	@echo "... visualizador_parallel.i"
+	@echo "... visualizador_parallel.s"
 .PHONY : help
 
 
