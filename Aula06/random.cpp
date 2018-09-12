@@ -34,7 +34,8 @@
 Randz::Randz(long MULTIPLIER,long ADDEND, long PMOD) :
     MULTIPLIER(MULTIPLIER),
     ADDEND(ADDEND),
-    PMOD(PMOD){
+    PMOD(PMOD){ 
+        random_last=1;
 }
 
 
