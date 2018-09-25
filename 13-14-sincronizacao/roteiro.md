@@ -99,8 +99,9 @@ O semáforo de contagem é inicializado com um determinado número de "permissõ
          4)https://bowenli86.github.io/2016/04/03/java/concurrency/Java-Concurrency-Semaphore/
 
 **Exercício**: escreva, em pseudo-código, qual deverá ser o comportamento do método `void acquire()`. \vspace{7em}
- void acquire(){
- std::unique_lock<std::mutex> lk(m);
+ void acquire()
+ {
+ unique_lock<mutex> lk(m);
  while (permits<=0)//se as vagas forem zero
     {
     cv.wait(lk);
@@ -111,7 +112,7 @@ O semáforo de contagem é inicializado com um determinado número de "permissõ
 **Exercício**: escreva, em pseudo-código, qual deverá ser o comportamento do método `void release()`.\vspace{7em}
 void release()
 {
-    std::unique_lock<std::mutex> lk(m);
+    unique_lock<mutex> lk(m);
     permits+=1;
     cv.notify_one();
 }
