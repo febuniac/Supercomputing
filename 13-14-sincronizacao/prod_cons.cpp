@@ -16,26 +16,25 @@ void produce(queue<int>& q, semaphore& s){
 	//std::unique_lock<std::mutex> lk(mutexs);
     q.push(it);
 	cout << "Produz: " << it << "\n";
-	this_thread::sleep_for(std::chrono::milliseconds(1000));
     s.release();
-
+    
+    this_thread::sleep_for(std::chrono::milliseconds(700));
     produce(q,s);
 }
 
 void consume(queue<int>& q, semaphore& s){
 
 	s.acquire();
-	cout << "Consome: " <<pow(q.front(),2) << "\n";
+	cout << "Consome: " <<pow((q.front()),2) << "\n";
 	//std::unique_lock<std::mutex> lk(mutexs);
-    this_thread::sleep_for(std::chrono::milliseconds(500));
     q.pop();	
-	
+    
+    this_thread::sleep_for(std::chrono::milliseconds(100));
     consume(q,s);
 
 }
 
 int main(){
-    srand (time(NULL));
 	queue<int> q;
 
 	semaphore s(0);
